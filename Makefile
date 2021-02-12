@@ -1,2 +1,2 @@
 all:
-	g++ -Iglad/include/ main.cpp ./glad/src/glad.c -o main -lglfw -lGL -ldl
+	g++ -Iglad/include/ main.cpp AbstractCamera.cpp TargetCamera.cpp ./glad/src/glad.c -o main -lglfw -lGL -ldl

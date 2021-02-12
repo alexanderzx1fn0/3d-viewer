@@ -15,6 +15,8 @@
 
 float yaw = -90.0f;
 float pitch, lastX, lastY = 0.0f;
+float rX = 0.0f;
+float rY = 0.0f;
 float mouseX = 0.0f, mouseY = 0.0f;
 int state = 0;
 void mouseCallback(GLFWwindow* window, double xpos, double ypos);
@@ -124,6 +126,14 @@ int main(void)
     cam.SetPosition(glm::vec3(5.0f));
     cam.SetTarget(glm::vec3(0.0f));
     cam.SetupProjection(45, (GLfloat)aspect);
+
+    glm::vec3 look = glm::normalize(cam.GetTarget() - cam.GetPosition());
+    float yaw = glm::degrees(float(atan2(look.z, look.x) + M_PI));
+    float pitch = glm::degrees(asin(look.y));
+    lastX = yaw;
+    lastY = pitch;
+    cam.Rotate(rX, rY, 0.0f);
+    
 
     /* Loop until the user closes the window */
     while( ! glfwWindowShouldClose(window) && !glfwGetKey(window, GLFW_KEY_ESCAPE) )
