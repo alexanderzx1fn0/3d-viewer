@@ -1,8 +1,8 @@
-#version 460
+#version 460 core
 
 out vec4 fragColor;
-
+in vec3 normal;
 void main()
 {
-    fragColor = vec4(vec3(1.0f), 1.0f);
+    fragColor = vec4(normalize(normal), 1.0f);
 }

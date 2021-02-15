@@ -23,6 +23,7 @@ public:
 
     const glm::mat4 GetViewMatrix() const;
     const glm::mat4 GetProjectionMatrix() const;
+    glm::mat4 GetViewProjMatrix();
 
 protected:
     float yaw, pitch, roll, fov, aspect_ratio, Znear, Zfar;

@@ -25,6 +25,10 @@ void AbstractCamera::SetupProjection(const float fovy,
     aspect_ratio = aspRatio;
 }
 
+glm::mat4 AbstractCamera::GetViewProjMatrix() {
+    return P * V;
+}
+
 const glm::mat4 AbstractCamera::GetViewMatrix() const
 {
     return V;
@@ -47,7 +51,7 @@ void AbstractCamera::SetPosition(const glm::vec3& p)
 
 void AbstractCamera::Rotate(const float y, const float p, const float r)
 {
-    yaw = glm::radians(y);
+    yaw = glm::radians(-y);
     pitch = glm::radians(p);
     roll = glm::radians(r);
     Update();
